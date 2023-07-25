@@ -1,18 +1,13 @@
 import styles from "./Post.module.css";
-import { useState } from "react";
+import overlayOnOff from "../../utils/overlayOnOff";
+
+import deletePost from "../../services/deletePost";
+
 import CommentForm from "../CommentForm/CommentForm";
 import AddPostForm from "../AddPostForm/AddPostForm";
 import EditPostForm from "../EditPostForm/EditPostForm";
-import overlayOnOff from "../../utils/overlayOnOff";
-import deletePost from "../../services/deletePost";
 
-const Post = ({ post, setPosts, posts }) => {
-  const [formOverlay, setFormOverlay] = useState({
-    addForm: false,
-    editForm: false,
-    comment: false,
-  });
-
+const Post = ({ post, setPosts, posts, formOverlay, setFormOverlay }) => {
   return (
     <div className={styles.postContainer}>
       <h2 className={styles.title}>{post.title}</h2>
@@ -57,6 +52,8 @@ const Post = ({ post, setPosts, posts }) => {
         <AddPostForm
           formOverlay={formOverlay}
           setFormOverlay={setFormOverlay}
+          posts={posts}
+          setPosts={setPosts}
         ></AddPostForm>
       )}
       {formOverlay.editForm && (
