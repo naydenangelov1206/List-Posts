@@ -1,0 +1,47 @@
+.postContainer {
+  border: 1px solid black;
+  margin-top: 20px;
+  width: 500px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.postImage {
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 150px;
+}
+
+.title {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.content {
+  margin-bottom: 50px;
+}
+
+.comment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 10px;
+}
+
+.buttonContainer button {
+  border-radius: 50px;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 150px;
+  border: 1px solid black;
+  cursor: pointer;
+}
