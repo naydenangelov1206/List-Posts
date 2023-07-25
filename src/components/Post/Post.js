@@ -15,6 +15,8 @@ const Post = ({
   setFormOverlay,
   onEditClick,
   postToEdit,
+  onCommentClick,
+  postToComment,
 }) => {
   return (
     <div className={styles.postContainer}>
@@ -24,11 +26,7 @@ const Post = ({
         <button onClick={() => deletePost(post, setPosts, posts)}>
           Delete Post
         </button>
-        <button
-          onClick={() => overlayOnOff("comment", formOverlay, setFormOverlay)}
-        >
-          Comment
-        </button>
+        <button onClick={onCommentClick}>Comment</button>
       </div>
       <img src={post.imageUrl} className={styles.postImage}></img>
       <p className={styles.content}>{post.status}</p>
@@ -50,6 +48,8 @@ const Post = ({
         <CommentForm
           formOverlay={formOverlay}
           setFormOverlay={setFormOverlay}
+          postToComment={postToComment}
+          setPosts={setPosts}
         ></CommentForm>
       )}
       {formOverlay.addForm && (

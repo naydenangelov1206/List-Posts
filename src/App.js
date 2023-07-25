@@ -1,8 +1,11 @@
 import "./App.css";
 import { useState } from "react";
-import Post from "./components/Post/Post.js";
+
 import mockPosts from "./data/mockPosts";
+
 import overlayOnOff from "./utils/overlayOnOff";
+
+import Post from "./components/Post/Post.js";
 
 function App() {
   const [posts, setPosts] = useState(mockPosts);
@@ -14,10 +17,15 @@ function App() {
   });
 
   const [postToEdit, setPostToEdit] = useState(null);
+  const [postToComment, setPostToComment] = useState(null);
 
   const handleEditClick = post => {
     setPostToEdit(post);
     overlayOnOff("editForm", formOverlay, setFormOverlay);
+  };
+  const handleCommentClick = post => {
+    setPostToComment(post);
+    overlayOnOff("comment", formOverlay, setFormOverlay);
   };
 
   return (
@@ -40,6 +48,8 @@ function App() {
             setFormOverlay={setFormOverlay}
             onEditClick={() => handleEditClick(post)}
             postToEdit={postToEdit}
+            onCommentClick={() => handleCommentClick(post)}
+            postToComment={postToComment}
           ></Post>
         );
       })}
