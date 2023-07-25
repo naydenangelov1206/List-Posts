@@ -13,6 +13,13 @@ function App() {
     comment: false,
   });
 
+  const [postToEdit, setPostToEdit] = useState(null);
+
+  const handleEditClick = post => {
+    setPostToEdit(post);
+    overlayOnOff("editForm", formOverlay, setFormOverlay);
+  };
+
   return (
     <div>
       <div>
@@ -31,6 +38,8 @@ function App() {
             posts={posts}
             formOverlay={formOverlay}
             setFormOverlay={setFormOverlay}
+            onEditClick={() => handleEditClick(post)}
+            postToEdit={postToEdit}
           ></Post>
         );
       })}

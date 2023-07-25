@@ -7,18 +7,20 @@ import CommentForm from "../CommentForm/CommentForm";
 import AddPostForm from "../AddPostForm/AddPostForm";
 import EditPostForm from "../EditPostForm/EditPostForm";
 
-const Post = ({ post, setPosts, posts, formOverlay, setFormOverlay }) => {
+const Post = ({
+  post,
+  setPosts,
+  posts,
+  formOverlay,
+  setFormOverlay,
+  onEditClick,
+  postToEdit,
+}) => {
   return (
     <div className={styles.postContainer}>
       <h2 className={styles.title}>{post.title}</h2>
       <div className={styles.buttonContainer}>
-        <button
-          onClick={() =>
-            overlayOnOff("editForm", formOverlay, setFormOverlay, post)
-          }
-        >
-          Edit Post
-        </button>
+        <button onClick={onEditClick}>Edit Post</button>
         <button onClick={() => deletePost(post, setPosts, posts)}>
           Delete Post
         </button>
@@ -64,7 +66,7 @@ const Post = ({ post, setPosts, posts, formOverlay, setFormOverlay }) => {
           setFormOverlay={setFormOverlay}
           posts={posts}
           setPosts={setPosts}
-          post={post}
+          postToEdit={postToEdit}
         ></EditPostForm>
       )}
     </div>

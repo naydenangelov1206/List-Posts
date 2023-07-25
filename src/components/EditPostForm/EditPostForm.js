@@ -10,13 +10,13 @@ const EditPostForm = ({
   setFormOverlay,
   posts,
   setPosts,
-  post,
+  postToEdit,
 }) => {
   const [editedPost, setEditedPost] = useState({
-    title: post.title,
-    imageUrl: post.imageUrl,
-    status: post.status,
-    comments: post.comments,
+    title: postToEdit.title,
+    imageUrl: postToEdit.imageUrl,
+    status: postToEdit.status,
+    comments: postToEdit.comments,
   });
 
   const handleInputChange = event => {
@@ -72,7 +72,7 @@ const EditPostForm = ({
         onClick={() =>
           editPost(
             posts,
-            post.id,
+            postToEdit.id,
             editedPost,
             setPosts,
             overlayOnOff,
