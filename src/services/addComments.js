@@ -1,5 +1,5 @@
+import generateRandomThreeDigitNumber from "../utils/generateRandomThreeDigitNumber";
 import overlayOnOff from "../utils/overlayOnOff";
-
 const addComment = (
   setNewComment,
   newComment,
@@ -16,7 +16,7 @@ const addComment = (
         id: post.comments.length + 1,
         text: newComment,
         userImage: "https://img.freepik.com/free-icon/user_318-504048.jpg",
-        userName: "userName" + post.comments.length + 1,
+        userName: "userName" + generateRandomThreeDigitNumber(),
       },
     ],
   };
