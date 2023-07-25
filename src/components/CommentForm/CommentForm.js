@@ -1,6 +1,7 @@
 import styles from "./CommentForm.module.css";
+import overlayOnOff from "../../utils/overlayOnOff";
 
-const CommentForm = () => {
+const CommentForm = ({ formOverlay, setFormOverlay }) => {
   return (
     <div className={styles.overlay}>
       <form>
@@ -9,9 +10,18 @@ const CommentForm = () => {
           <input type="text" name="comment" id="comment" />
         </label>
 
-        <button type="submit">Post</button>
+        <button
+          type="submit"
+          onClick={() => overlayOnOff("comment", formOverlay, setFormOverlay)}
+        >
+          Post
+        </button>
 
-        <button>❌</button>
+        <button
+          onClick={() => overlayOnOff("comment", formOverlay, setFormOverlay)}
+        >
+          ❌
+        </button>
       </form>
     </div>
   );

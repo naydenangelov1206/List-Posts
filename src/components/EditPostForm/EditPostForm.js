@@ -1,7 +1,8 @@
+import overlayOnOff from "../../utils/overlayOnOff";
 import styles from "../AddPostForm/AddPostForm.module.css";
 import { useState } from "react";
 
-const EditPostForm = () => {
+const EditPostForm = ({ formOverlay, setFormOverlay }) => {
   const [newPost, setNewPost] = useState({
     title: "",
     imageUrl: "",
@@ -33,9 +34,18 @@ const EditPostForm = () => {
         </label>
       </form>
 
-      <button type="submit">Post</button>
+      <button
+        type="submit"
+        onClick={() => overlayOnOff("editForm", formOverlay, setFormOverlay)}
+      >
+        Post
+      </button>
 
-      <button>❌</button>
+      <button
+        onClick={() => overlayOnOff("editForm", formOverlay, setFormOverlay)}
+      >
+        ❌
+      </button>
     </div>
   );
 };

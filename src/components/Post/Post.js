@@ -3,6 +3,7 @@ import { useState } from "react";
 import CommentForm from "../CommentForm/CommentForm";
 import AddPostForm from "../AddPostForm/AddPostForm";
 import EditPostForm from "../EditPostForm/EditPostForm";
+import overlayOnOff from "../../utils/overlayOnOff";
 
 const Post = ({ post }) => {
   const [formOverlay, setFormOverlay] = useState({
@@ -15,9 +16,17 @@ const Post = ({ post }) => {
     <div className={styles.postContainer}>
       <h2 className={styles.title}>{post.title}</h2>
       <div className={styles.buttonContainer}>
-        <button>Edit Post</button>
+        <button
+          onClick={() => overlayOnOff("editForm", formOverlay, setFormOverlay)}
+        >
+          Edit Post
+        </button>
         <button>Delete Post</button>
-        <button>Comment</button>
+        <button
+          onClick={() => overlayOnOff("comment", formOverlay, setFormOverlay)}
+        >
+          Comment
+        </button>
       </div>
       <img src={post.imageUrl} className={styles.postImage}></img>
       <p className={styles.content}>{post.status}</p>
@@ -35,9 +44,24 @@ const Post = ({ post }) => {
         })}
       </div>
 
-      {formOverlay.comment && <CommentForm></CommentForm>}
-      {formOverlay.addForm && <AddPostForm></AddPostForm>}
-      {formOverlay.editForm && <EditPostForm></EditPostForm>}
+      {formOverlay.comment && (
+        <CommentForm
+          formOverlay={formOverlay}
+          setFormOverlay={setFormOverlay}
+        ></CommentForm>
+      )}
+      {formOverlay.addForm && (
+        <AddPostForm
+          formOverlay={formOverlay}
+          setFormOverlay={setFormOverlay}
+        ></AddPostForm>
+      )}
+      {formOverlay.editForm && (
+        <EditPostForm
+          formOverlay={formOverlay}
+          setFormOverlay={setFormOverlay}
+        ></EditPostForm>
+      )}
     </div>
   );
 };
