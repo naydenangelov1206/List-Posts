@@ -1,21 +1,45 @@
-import overlayOnOff from "../../utils/overlayOnOff";
 import styles from "../AddPostForm/AddPostForm.module.css";
 import { useState } from "react";
 
-const EditPostForm = ({ formOverlay, setFormOverlay }) => {
-  const [newPost, setNewPost] = useState({
-    title: "",
-    imageUrl: "",
-    status: "",
-    comments: [],
+import editPost from "../../services/editPost";
+
+import overlayOnOff from "../../utils/overlayOnOff";
+
+const EditPostForm = ({
+  formOverlay,
+  setFormOverlay,
+  posts,
+  setPosts,
+  post,
+}) => {
+  const [editedPost, setEditedPost] = useState({
+    title: post.title,
+    imageUrl: post.imageUrl,
+    status: post.status,
+    comments: post.comments,
   });
+
+  const handleInputChange = event => {
+    const { name, value } = event.target;
+    setEditedPost(prevState => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
 
   return (
     <div className={styles.overlay}>
       <form>
         <label htmlFor="title">
           Title:
-          <input type="text" name="title" id="title" placeholder="Title" />
+          <input
+            type="text"
+            name="title"
+            id="title"
+            value={editedPost.title}
+            onChange={handleInputChange}
+            placeholder="Title"
+          />
         </label>
 
         <label htmlFor="imageUrl">
@@ -23,6 +47,8 @@ const EditPostForm = ({ formOverlay, setFormOverlay }) => {
           <input
             type="text"
             name="imageUrl"
+            value={editedPost.imageUrl}
+            onChange={handleInputChange}
             id="imageUrl"
             placeholder="ImageUrl"
           />
@@ -30,13 +56,30 @@ const EditPostForm = ({ formOverlay, setFormOverlay }) => {
 
         <label htmlFor="status">
           Status:
-          <input type="text" name="status" id="status" placeholder="Status" />
+          <input
+            type="text"
+            name="status"
+            id="status"
+            value={editedPost.status}
+            onChange={handleInputChange}
+            placeholder="Status"
+          />
         </label>
       </form>
 
       <button
         type="submit"
-        onClick={() => overlayOnOff("editForm", formOverlay, setFormOverlay)}
+        onClick={() =>
+          editPost(
+            posts,
+            post.id,
+            editedPost,
+            setPosts,
+            overlayOnOff,
+            formOverlay,
+            setFormOverlay
+          )
+        }
       >
         Post
       </button>

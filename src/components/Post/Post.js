@@ -13,7 +13,9 @@ const Post = ({ post, setPosts, posts, formOverlay, setFormOverlay }) => {
       <h2 className={styles.title}>{post.title}</h2>
       <div className={styles.buttonContainer}>
         <button
-          onClick={() => overlayOnOff("editForm", formOverlay, setFormOverlay)}
+          onClick={() =>
+            overlayOnOff("editForm", formOverlay, setFormOverlay, post)
+          }
         >
           Edit Post
         </button>
@@ -60,6 +62,9 @@ const Post = ({ post, setPosts, posts, formOverlay, setFormOverlay }) => {
         <EditPostForm
           formOverlay={formOverlay}
           setFormOverlay={setFormOverlay}
+          posts={posts}
+          setPosts={setPosts}
+          post={post}
         ></EditPostForm>
       )}
     </div>
