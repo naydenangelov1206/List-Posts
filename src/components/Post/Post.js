@@ -4,8 +4,9 @@ import CommentForm from "../CommentForm/CommentForm";
 import AddPostForm from "../AddPostForm/AddPostForm";
 import EditPostForm from "../EditPostForm/EditPostForm";
 import overlayOnOff from "../../utils/overlayOnOff";
+import deletePost from "../../services/deletePost";
 
-const Post = ({ post }) => {
+const Post = ({ post, setPosts, posts }) => {
   const [formOverlay, setFormOverlay] = useState({
     addForm: false,
     editForm: false,
@@ -21,7 +22,9 @@ const Post = ({ post }) => {
         >
           Edit Post
         </button>
-        <button>Delete Post</button>
+        <button onClick={() => deletePost(post, setPosts, posts)}>
+          Delete Post
+        </button>
         <button
           onClick={() => overlayOnOff("comment", formOverlay, setFormOverlay)}
         >

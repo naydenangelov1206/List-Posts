@@ -9,7 +9,14 @@ function App() {
   return (
     <div>
       {posts.map(post => {
-        return <Post key={post.id} post={post}></Post>;
+        return (
+          <Post
+            key={post.id}
+            post={post}
+            setPosts={setPosts}
+            posts={posts}
+          ></Post>
+        );
       })}
     </div>
   );
