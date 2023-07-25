@@ -1,3 +1,4 @@
+import "./App.css";
 import { useState } from "react";
 import mockPosts from "./data/mockPosts";
 import Post from "./components/Post/Post.js";

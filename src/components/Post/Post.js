@@ -1,6 +1,14 @@
 import styles from "./Post.module.css";
+import CommentForm from "../CommentForm/CommentForm";
+import { useState } from "react";
 
 const Post = ({ post }) => {
+  const [formOverlay, setFormOverlay] = useState({
+    addForm: false,
+    editForm: false,
+    comment: true,
+  });
+
   return (
     <div className={styles.postContainer}>
       <h2 className={styles.title}>{post.title}</h2>
@@ -24,6 +32,8 @@ const Post = ({ post }) => {
           );
         })}
       </div>
+
+      {formOverlay.comment && <CommentForm></CommentForm>}
     </div>
   );
 };
