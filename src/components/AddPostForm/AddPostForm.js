@@ -20,66 +20,70 @@ const AddPostForm = ({ formOverlay, setFormOverlay, posts, setPosts }) => {
 
   return (
     <div className={styles.overlay}>
-      <form>
-        <label htmlFor="title">
-          Title:
-          <input
-            type="text"
-            name="title"
-            id="title"
-            value={newPost.title}
-            onChange={handleInputChange}
-            placeholder="Title"
-          />
-        </label>
+      <div className={styles.formContainer}>
+        <form className={styles.addPostsForm}>
+          <label htmlFor="title">
+            Title:
+            <input
+              type="text"
+              name="title"
+              id="title"
+              value={newPost.title}
+              onChange={handleInputChange}
+              placeholder="Title"
+            />
+          </label>
 
-        <label htmlFor="imageUrl">
-          ImageUrl:
-          <input
-            type="text"
-            name="imageUrl"
-            value={newPost.imageUrl}
-            onChange={handleInputChange}
-            id="imageUrl"
-            placeholder="ImageUrl"
-          />
-        </label>
+          <label htmlFor="imageUrl">
+            ImageUrl:
+            <input
+              type="text"
+              name="imageUrl"
+              value={newPost.imageUrl}
+              onChange={handleInputChange}
+              id="imageUrl"
+              placeholder="ImageUrl"
+            />
+          </label>
 
-        <label htmlFor="status">
-          Status:
-          <input
-            type="text"
-            name="status"
-            id="status"
-            value={newPost.status}
-            onChange={handleInputChange}
-            placeholder="Status"
-          />
-        </label>
-      </form>
+          <label htmlFor="status">
+            Status:
+            <input
+              type="text"
+              name="status"
+              id="status"
+              value={newPost.status}
+              onChange={handleInputChange}
+              placeholder="Status"
+            />
+          </label>
 
-      <button
-        type="submit"
-        onClick={() =>
-          addNewPost(
-            posts,
-            setPosts,
-            newPost,
-            setNewPost,
-            overlayOnOff,
-            formOverlay,
-            setFormOverlay
-          )
-        }
-      >
-        Post
-      </button>
+          <button
+            type="submit"
+            onClick={() =>
+              addNewPost(
+                posts,
+                setPosts,
+                newPost,
+                setNewPost,
+                overlayOnOff,
+                formOverlay,
+                setFormOverlay
+              )
+            }
+            className={styles.postButton}
+          >
+            Post
+          </button>
+        </form>
 
-      <button
-        onClick={() => overlayOnOff("addForm", formOverlay, setFormOverlay)}
-      >
-        ❌
-      </button>
+        <button
+          onClick={() => overlayOnOff("addForm", formOverlay, setFormOverlay)}
+          className={styles.cancelButton}
+        >
+          ❌
+        </button>
+      </div>
     </div>
   );
 };

@@ -1,19 +1,21 @@
 .postContainer {
   border: 1px solid black;
-  margin-top: 20px;
-  width: 500px;
-  height: 400px;
+  width: 100%;
+  max-width: 490px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 10px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .postImage {
   border: 1px solid black;
   border-radius: 50%;
   width: 150px;
+  max-width: 100%;
 }
 
 .title {
@@ -44,4 +46,29 @@
   width: 150px;
   border: 1px solid black;
   cursor: pointer;
+}
+
+@media (max-width: 400px) {
+  .postContainer {
+    max-width: 100%;
+  }
+
+  .postImage {
+    width: 100px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .buttonContainer button {
+    padding: 6px;
+    width: 100px;
+  }
+
+  .buttonContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
 }

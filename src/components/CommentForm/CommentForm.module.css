@@ -14,3 +14,47 @@
 button {
   cursor: pointer;
 }
+
+.commentForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.formContainer {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+
+.formContainer label {
+  font-weight: bold;
+}
+
+.formContainer input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.formContainer .cancelButton {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+
+.formContainer .postButton {
+  margin-top: 10px;
+  cursor: pointer;
+  padding: 10px;
+  width: 250px;
+}

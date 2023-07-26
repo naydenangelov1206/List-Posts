@@ -7,3 +7,32 @@
 body {
   background-color: rgb(26, 106, 109);
 }
+
+.addPostButton {
+  width: 150px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px;
+  border-radius: 50px;
+  border: 1px solid black;
+  cursor: pointer;
+  background-color: #fff;
+  min-width: 100px;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 400px) {
+  .addPostButton {
+    font-size: 8px;
+    padding: 8px;
+    min-width: 50px;
+    width: 40px;
+    height: 40px;
+    border: 50%;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    text-align: center;
+  }
+}

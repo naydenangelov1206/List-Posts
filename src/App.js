@@ -33,6 +33,7 @@ function App() {
       <div>
         <button
           onClick={() => overlayOnOff("addForm", formOverlay, setFormOverlay)}
+          className="addPostButton"
         >
           Add New Post
         </button>

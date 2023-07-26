@@ -19,40 +19,44 @@ const CommentForm = ({
 
   return (
     <div className={styles.overlay}>
-      <form>
-        <label htmlFor="comment">
-          Comment:
-          <input
-            type="text"
-            name="comment"
-            id="comment"
-            value={newComment}
-            onChange={handleCommentChange}
-          />
-        </label>
+      <div className={styles.formContainer}>
+        <form className={styles.commentForm}>
+          <label htmlFor="comment">
+            Comment:
+            <input
+              type="text"
+              name="comment"
+              id="comment"
+              value={newComment}
+              onChange={handleCommentChange}
+            />
+          </label>
 
-        <button
-          type="submit"
-          onClick={() =>
-            addComment(
-              setNewComment,
-              newComment,
-              postToComment,
-              setPosts,
-              formOverlay,
-              setFormOverlay
-            )
-          }
-        >
-          Post
-        </button>
+          <button
+            type="submit"
+            onClick={() =>
+              addComment(
+                setNewComment,
+                newComment,
+                postToComment,
+                setPosts,
+                formOverlay,
+                setFormOverlay
+              )
+            }
+            className={styles.postButton}
+          >
+            Post
+          </button>
 
-        <button
-          onClick={() => overlayOnOff("comment", formOverlay, setFormOverlay)}
-        >
-          ❌
-        </button>
-      </form>
+          <button
+            onClick={() => overlayOnOff("comment", formOverlay, setFormOverlay)}
+            className={styles.cancelButton}
+          >
+            ❌
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
